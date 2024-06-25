@@ -1,0 +1,48 @@
+# # Define the compiler
+# CC=g++
+
+# # Define any compile-time flags
+# CFLAGS=-Wall -g
+
+# # Define the target executable
+# TARGET=iPerfer
+
+# all: $(TARGET)
+
+# $(TARGET): iPerfer.cpp
+# 	$(CC) $(CFLAGS) -o $(TARGET) iPerfer.cpp
+
+# clean:
+# 	rm -f $(TARGET)
+
+# .PHONY: all clean
+
+# Define the compiler and the executable name
+CXX = g++
+EXECUTABLE = iPerfer
+
+# Define the compiler flags
+CXXFLAGS = -Wall -std=c++14
+
+# Source files
+SOURCES = iPerfer.cpp
+OBJECTS = $(SOURCES:.cpp=.o)
+
+# Default target
+all: $(EXECUTABLE)
+
+# Link the executable
+$(EXECUTABLE): $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(OBJECTS)
+
+# Compile the source files into object files
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $<
+
+# Clean target
+clean:
+	rm -f $(OBJECTS) $(EXECUTABLE)
+
+# These targets do not create any files
+.PHONY: all clean
+

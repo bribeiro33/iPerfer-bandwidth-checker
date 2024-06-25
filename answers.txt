@@ -1,0 +1,33 @@
+2)    Predicted throughput: 20 Mbps
+      Predicted latency: 60 ms
+      Actual throughput: 18.655 Mbps
+      Actual latency: 62.7215 ms (125.443 rtt avg / 2)
+      Explanation of results: The predicted latency is calculated from all the delays between the links along the path between h1 and h10
+       and the predicted throughput was L1's since it's the smallest (bottleneck).The predicted and actual numbers are pretty similar,
+       and the variation is within expected bounds given that predicted values are idealized and usually aren't achieved in the real world.
+
+3.1)  Predicted throughput: 10 Mbps for each pair
+      Predicted latency: 60 ms
+      Actual throughput: h1h6 13.459 Mbps, h2h9 5.768 Mbps
+      Actual latency: h1h6 61.324 ms (122.648 rtt avg / 2) h2h9 61.440 ms (122.879 rtt avg /2)
+      Explanation of results: You get the predicted throughput from dividing the bottleneck into how many users are using it (2 in this case).
+      The latency however stays the same. The expected vs actual latencies are very similar, but the throughputs are not. This could be explained
+      by the fact that they weren't started at the perfectly same time, so more of the first pair was being transmitted than the second since the first pair started earlier. If you get the average of the two of them though, you get 9.6135 which
+      is very close to to predicted (so it follows that had I started at the same time, the predicted would've been accurate).
+
+3.2)  Predicted throughput: Approx. 6.67 Mbps for each pair
+      Predicted latency: 60ms
+      Actual throughput: h1h6 11.525 Mbps, h2h9: 3.736 Mbps, h5h10 4.100 Mbps
+      Actual latency: h1h6 61.5235 ms (123.047 rtt avg /2) h2h9 62.797 ms (125.594 rrt avg /2) h5h10 63.0615 ms (126.123 rtt avg /2)
+      Explanation of results: The predicted and actual latencies as before, the same as the previous questions as increased traffic
+      doesn't affect this latency (as long as there are no queues). Similar to 3.1, the throughput is different because they weren't all started at the same time
+      and bandwidth allocation isn't perfectly split between each connection. When all three are averaged together, you get 6.454 Mbps, which is very similar to the predicted.
+      It's actually under the predicted because the first pair and third pair got some time alone with the links.
+
+4)    Predicted throughput: for both pairs 12.5 Mbps
+      Predicted latency: h1h10 60 ms h3h8 15 ms
+      Actual throughput: h1h10 13.135 Mbps, h3h8 10.478 Mbps
+      Actual latency: h1h10 62.9005 ms (125.801 rtt avg / 2)  h3h8 16.8055 ms (33.611 rtt avg / 2)
+      Explanation of results: Both the actual and predicted values were pretty similar. The throughput was calculated by halving the bandwidth of the link between 
+      s3 and s5 as it's the link with the lowest bandwidth that's on both of the pairs' paths. The variance is due to the fact that bandwidth allocation isn't exact. 
+      The latencies aren't affected by the fact that both pairs are travelling through the same links, so it was calculated just by adding the latencies of the links each message travels through.
